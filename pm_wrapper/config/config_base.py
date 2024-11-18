@@ -1,5 +1,5 @@
 
-from abc import ABC, abstractmethod
+from abc import ABC
 import os
 import json
 
@@ -8,7 +8,9 @@ class ConfigBase(ABC):
     Base class for configuration.
     """
 
-    FILE_NAME: str
+    # config file name
+    FILE_NAME: str = ""
+
     def __init__(self, config_dir: str):
         """
         Initialize configuration.

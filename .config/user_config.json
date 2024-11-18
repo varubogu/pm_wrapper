@@ -1,0 +1,16 @@
+{
+  "command_available": "command -v {{command}} &> /dev/null",
+  "default_package": "brew",
+  "package_managers": {
+    "brew": "~/.config/package_profile/brew/config.json",
+    "winget": "~/.config/package_profile/winget/config.json",
+    "apt": "~/.config/package_profile/apt/config.json",
+    "snap": "~/.config/package_profile/snap/config.json",
+    "pacman": "~/.config/package_profile/pacman/config.json",
+    "yum": "~/.config/package_profile/yum/config.json",
+    "dnf": "~/.config/package_profile/dnf/config.json",
+    "npm": "~/.config/package_profile/npm/config.json",
+    "yarn": "~/.config/package_profile/yarn/config.json"
+  }
+
+}

@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import json
+import argparse
+
+
+
+
+def main():
+
+
+
+
+    parser = argparse.ArgumentParser(description="Package management tool")
+
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+
+    update_parser = subparsers.add_parser("update", help="Update a package")
+    update_parser.add_argument("-p", "--package", type=str, help="Target package command")
+    update_parser.add_argument("-a", "--all", action="store_true", help="All packages")
+    update_parser.add_argument("-d", "--dry-run", action="store_true", help="Dry run")
+
+    dump_parser = subparsers.add_parser("dump", help="Dump a package")
+    dump_parser.add_argument("-p", "--package", type=str, help="Target package command")
+    dump_parser.add_argument("-f", "--file", type=str, help="Target bundle file")
+    dump_parser.add_argument("-a", "--all", action="store_true", help="All packages")
+    dump_parser.add_argument("-d", "--dry-run", action="store_true", help="Dry run")
+
+    args = parser.parse_args()
+
+    commands = [
+        InstallCommand,
+    ]
+
+    for command in commands:
+        command.parser(subparsers)
+
+    execute_command = None
+    for command in commands:
+        if args.command == command.command_name():
+            execute_command = command(parser, args)
+            break
+
+    if execute_command is None:
+        if args.command:
+            parser.print_usage()
+            sys.exit(0)
+        else:
+            print("Unknown command: {}".format(args.command))
+            parser.print_usage()
+            sys.exit(1)
+
+    if not execute_command.check_parameters():
+        execute_command.print_error()
+        sys.exit(1)
+
+    return execute_command.execute()
+
+def config_load() -> (dict, dict):
+    """
+    Loads the configuration file.
+    """
+    config_file_name = "config.json"
+    package_config_file_name = "package.json"
+
+
+def config_dir_search() -> str:
+    """
+    Searches for the configuration directory.
+    """
+
+    # XDG_BASE_CONFIG_DIR
+    XDG_BASE_CONFIG_DIR = os.getenv("XDG_CONFIG_HOME")
+    if not os.path.exists(XDG_BASE_CONFIG_DIR):
+        return XDG_BASE_CONFIG_DIR
+
+    HOME_DIR = os.getenv("HOME") or os.getenv("USERPROFILE")
+    if HOME_DIR is None:
+        raise RuntimeError("HOME or USERPROFILE is not set")
+    if not os.path.exists(HOME_DIR):
+        raise RuntimeError("HOME or USERPROFILE is not exists")
+
+    # $HOME/.config
+    HOME_CONFIG_DIR = os.path.join(HOME_DIR, ".config")
+    if not os.path.exists(HOME_CONFIG_DIR):
+        return HOME_CONFIG_DIR
+
+    # $HOME/.pm_wrapper_py/config
+    HOME_PM_WRAPPER_PY_DIR = os.path.join(HOME_DIR, ".pm_wrapper_py", "config")
+    if not os.path.exists(HOME_PM_WRAPPER_PY_DIR):
+        return HOME_PM_WRAPPER_PY_DIR
+
+    raise RuntimeError("Configuration directory not found")
+
+
+
+def execute_command(command, can_skip, package, dump_file, is_all, dry_run):
+    print(command, can_skip, package, dump_file, is_all, dry_run)
+
+
+if __name__ == "__main__":
+    main()

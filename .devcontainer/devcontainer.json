@@ -10,6 +10,9 @@
 			"version": "latest",
 			"installMethod": "pyenv"
 		},
+		"ghcr.io/devcontainers-contrib/features/poetry:latest": {
+			"version": "latest"
+		},
 		//// Test environment
 		// "ghcr.io/devcontainers/features/docker-in-docker:2": {
 		// 	"version": "latest",

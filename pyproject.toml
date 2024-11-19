@@ -14,7 +14,7 @@ python = "^3.12"
 pytest = "^8.3.3"
 
 [tool.poetry.scripts]
-package = "pm_wrapper.package:main"
+main = "pm_wrapper.main:main"
 build = "pm_wrapper.build:main"
 
 [build-system]

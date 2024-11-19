@@ -3,7 +3,6 @@
 import logging
 import sys
 import os
-import json
 import argparse
 
 from pm_wrapper import commands

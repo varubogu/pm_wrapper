@@ -1,7 +1,7 @@
-from pm_wrapper.operating_system.os_base import OSBase
+from pm_wrapper.operating_system.os_base import OperatingSystemBase
 
 
-class OpenBSD(OSBase):
+class OpenBSD(OperatingSystemBase):
     """
     OpenBSD
     """

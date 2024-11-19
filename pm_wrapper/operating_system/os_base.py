@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 
-from pm_wrapper.config.config import UserConfig
+from pm_wrapper.config.config import Config
 
-class OSBase(ABC):
-    def __init__(self, config: UserConfig):
+class OperatingSystemBase(ABC):
+    def __init__(self, config: Config):
         self.config = config
 
     @abstractmethod

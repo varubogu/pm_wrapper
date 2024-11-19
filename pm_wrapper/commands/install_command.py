@@ -2,7 +2,7 @@ import argparse
 import logging
 
 from pm_wrapper.commands.command_base import CommandBase
-from pm_wrapper.package_manager.package_manager_base import PMCommandBase
+from pm_wrapper.package_manager.package_manager_base import PackageManagerBase
 
 
 logger = logging.getLogger(__name__)
@@ -57,7 +57,7 @@ class InstallCommand(CommandBase):
 
         return len(self.errors) == 0
 
-    def execute(self, package_manager: PMCommandBase, options: dict):
+    def execute(self, package_manager: PackageManagerBase, options: dict):
         """
         Executes the command.
         """

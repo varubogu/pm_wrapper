@@ -4,7 +4,7 @@ import subprocess
 
 logger = logging.getLogger(__name__)
 
-class PMCommandBase(ABC):
+class PackageManagerBase(ABC):
     def execute(self, command: list[str]):
         try:
             command_str = '"{}"'.format('" "'.join(command))
@@ -18,76 +18,76 @@ class PMCommandBase(ABC):
         """
         Update the package manager
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def upgrade_(self, command: list[str]):
         """
         Upgrade a package
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def install_(self, command: list[str]):
         """
         Install a package
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def uninstall_(self, command: list[str]):
         """
         Uninstall a package
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def search_(self, command: list[str]):
         """
         Search for a package
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def list_(self, command: list[str]):
         """
         List installed packages
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def info_(self, command: list[str]):
         """
         Get information about a package
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def import_(self, command: list[str]):
         """
         Import a package from a file
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def export_(self, command: list[str]):
         """
         Export a package to a file
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def config_(self, command: list[str]):
         """
         Configure the package manager
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def help_(self, command: list[str]):
         """
         Show help
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def version_(self, command: list[str]):
         """
         Show version
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")
 
     def package_file_name(self) -> str:
         """
         Returns the package file name.
         """
-        raise NotImplementedError("pm_commands.PMCommandBase")
+        raise NotImplementedError("PackageManagerBase")

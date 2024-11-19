@@ -7,7 +7,7 @@ import argparse
 
 from pm_wrapper import commands
 from pm_wrapper.commands.options import make_options
-from pm_wrapper import os_
+from pm_wrapper import operating_system
 from pm_wrapper.package_manager import find_pm_command, find_package_files_to_commands
 
 logger = logging.getLogger(__name__)
@@ -62,7 +62,7 @@ def main():
             target_pm = find_pm_command(args.package)
         else:
 
-            target_os = os_.get_os()
+            target_os = operating_system.get_os()
 
             home_dir = os.path.expanduser("~")
             pwd = os.getcwd()

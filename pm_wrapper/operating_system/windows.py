@@ -1,6 +1,6 @@
-from pm_wrapper.operating_system.os_base import OSBase
+from pm_wrapper.operating_system.os_base import OperatingSystemBase
 
 
-class Windows(OSBase):
+class Windows(OperatingSystemBase):
     def default_package(self) -> str:
         return "winget"

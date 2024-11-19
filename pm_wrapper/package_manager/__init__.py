@@ -1,13 +1,13 @@
 import pathlib
 from typing import Optional
-from pm_wrapper.package_manager.package_manager_base import PMCommandBase
+from pm_wrapper.package_manager.package_manager_base import PackageManagerBase
 from pm_wrapper.package_manager.brew import BrewCommand
 
 __all__ = [
     BrewCommand,
 ]
 
-def find_pm_command(command_name: str) -> Optional[PMCommandBase]:
+def find_pm_command(command_name: str) -> Optional[PackageManagerBase]:
     """
     Finds the PM command.
     """
@@ -16,7 +16,7 @@ def find_pm_command(command_name: str) -> Optional[PMCommandBase]:
             return command
     return None
 
-def find_pm_command_from_package_file(package_file_name: str) -> Optional[PMCommandBase]:
+def find_pm_command_from_package_file(package_file_name: str) -> Optional[PackageManagerBase]:
     """
     Finds the PM command from the package file.
     """
@@ -38,11 +38,11 @@ def find_package_files(pwd: str) -> list[pathlib.Path]:
                 results.append(file_path)
     return results
 
-def find_package_files_to_commands(pwd: str) -> list[PMCommandBase]:
+def find_package_files_to_commands(pwd: str) -> list[PackageManagerBase]:
     """
     Finds the package files to the commands.
     """
-    results: list[PMCommandBase] = []
+    results: list[PackageManagerBase] = []
     for command in __all__:
         file_name = command.package_file_name()
         if file_name is not None:

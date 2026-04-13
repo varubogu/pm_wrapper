@@ -11,7 +11,7 @@ python = "^3.12"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3.3"
+pytest = ">=8.3.3,<10.0.0"
 
 [tool.poetry.scripts]
 main = "pm_wrapper.main:main"
